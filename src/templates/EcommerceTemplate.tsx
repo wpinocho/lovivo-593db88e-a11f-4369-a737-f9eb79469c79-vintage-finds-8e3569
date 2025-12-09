@@ -45,32 +45,34 @@ export const EcommerceTemplate = ({
   const { hasCollections, loading: loadingCollections } = useCollections()
 
   const header = (
-    <div className={`py-2 ${headerClassName}`}>
+    <div className={`py-4 ${headerClassName}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <BrandLogoLeft />
+          <div className="flex-shrink-0">
+            <BrandLogoLeft />
+          </div>
 
           {/* Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <nav className="flex space-x-6">
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <nav className="flex items-center space-x-8">
               {!loadingCollections && hasCollections && (
                 <ScrollLink 
                   to="/#collections" 
-                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  className="text-sm font-medium tracking-wide text-foreground/70 hover:text-foreground transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
                 >
                   Collections
                 </ScrollLink>
               )}
               <ScrollLink 
                 to="/#products" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+                className="text-sm font-medium tracking-wide text-foreground/70 hover:text-foreground transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
               >
                 Products
               </ScrollLink>
               <Link 
                 to="/blog" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+                className="text-sm font-medium tracking-wide text-foreground/70 hover:text-foreground transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
               >
                 Blog
               </Link>
@@ -78,7 +80,7 @@ export const EcommerceTemplate = ({
           </div>
 
           {/* Profile & Cart */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3 flex-shrink-0">
             <ProfileMenu />
             
             {showCart && (
@@ -86,12 +88,12 @@ export const EcommerceTemplate = ({
                 variant="ghost"
                 size="icon"
                 onClick={openCart}
-                className="relative"
+                className="relative hover:bg-muted/80 transition-all"
                 aria-label="Ver carrito"
               >
                 <ShoppingCart className="h-5 w-5" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-lg animate-in zoom-in-50">
                     {totalItems > 99 ? '99+' : totalItems}
                   </span>
                 )}
@@ -102,8 +104,8 @@ export const EcommerceTemplate = ({
 
         {/* Page Title */}
         {pageTitle && (
-          <div className="mt-6">
-            <h1 className="text-3xl font-bold text-foreground">
+          <div className="mt-6 pb-4 border-b">
+            <h1 className="text-3xl font-bold text-foreground tracking-tight">
               {pageTitle}
             </h1>
           </div>
